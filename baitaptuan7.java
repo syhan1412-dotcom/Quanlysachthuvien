@@ -29,7 +29,7 @@ class Sach {
     }
 }
 
-public class baithuchanhtuan7 {
+public class baitaptuan7 {
     public static void main(String[] args) {
         Sach s1 = new Sach("S01", "Lap trinh Java co ban", "Nguyen Van An", 2023, 10);
         Sach s2 = new Sach("S02", "Cau truc du lieu va Giai thuat", "Tran Thi Bui", 2022, 5);
