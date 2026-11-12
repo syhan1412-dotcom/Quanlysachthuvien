@@ -1,3 +1,4 @@
+import java.time.Year;
 import java.util.ArrayList;
 
 class Sach {
@@ -11,12 +12,57 @@ class Sach {
         this.maSach = maSach;
         this.tieuDe = tieuDe;
         this.tacGia = tacGia;
-        this.namXuatBan = namXuatBan;
-        this.soLuong = soLuong;
+        setNamXuatBan(namXuatBan);
+        setSoLuong(soLuong);
     }
 
     public String getMaSach() {
         return maSach;
+    }
+
+    public void setMaSach(String maSach) {
+        this.maSach = maSach;
+    }
+
+    public String getTieuDe() {
+        return tieuDe;
+    }
+
+    public void setTieuDe(String tieuDe) {
+        this.tieuDe = tieuDe;
+    }
+
+    public String getTacGia() {
+        return tacGia;
+    }
+
+    public void setTacGia(String tacGia) {
+        this.tacGia = tacGia;
+    }
+
+    public int getNamXuatBan() {
+        return namXuatBan;
+    }
+
+    public void setNamXuatBan(int namXuatBan) {
+        int currentYear = Year.now().getValue();
+        if (namXuatBan > 0 && namXuatBan <= currentYear) {
+            this.namXuatBan = namXuatBan;
+        } else {
+            System.out.println("Nam xuat ban khong hop le!");
+        }
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        if (soLuong >= 0) {
+            this.soLuong = soLuong;
+        } else {
+            System.out.println("So luong khong duoc am!");
+        }
     }
 
     public void hienThiThongTin() {
@@ -35,20 +81,19 @@ public class baitaptuan7 {
         Sach s2 = new Sach("S02", "Cau truc du lieu va Giai thuat", "Tran Thi Bui", 2022, 5);
         Sach s3 = new Sach("S03", "Thiet ke huong doi tuong", "Le Van Chien", 2024, 8);
 
-        System.out.println("=== THONG TIN 1 CUON SACH ===");
-        s1.hienThiThongTin();
-
         ArrayList<Sach> danhSachSach = new ArrayList<>();
         danhSachSach.add(s1);
         danhSachSach.add(s2);
         danhSachSach.add(s3);
 
+        System.out.println("=== KIEM TRA SETTER HOP LE VA KHONG HOP LE ===");
+        s1.setSoLuong(20);
+        s1.setSoLuong(-5);
+        s1.setNamXuatBan(2099);
+
         System.out.println("=== DANH SACH SACH TRONG THU VIEN ===");
         for (Sach s : danhSachSach) {
             s.hienThiThongTin();
         }
-
-        danhSachSach.removeIf(s -> s.getMaSach().equals("S02"));
-        System.out.println("So luong dau sach con lai sau khi xoa S02: " + danhSachSach.size());
     }
 }
